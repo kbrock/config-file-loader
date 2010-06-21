@@ -1,0 +1,6 @@
+development:
+  fun: yes
+  uptime_percentage: 5
+production:
+  fun: no
+  uptime_percentage: 99.9

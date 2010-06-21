@@ -135,6 +135,19 @@ describe ConfigFileLoader do
       l('a','b').should ==
         {:b=>{:bb=>{:bbb=>222}}, :c=>{:aa=>11, :bb=>22, :cc=>{:ccc=>222, :bbb=>222, :aaa=>111}}, :a=>{:aa=>{:aaa=>111}}}
     end
+
+    context "dev_prod" do
+      it "should load dev properties" do
+        ConfigFileLoader.env='development'
+        l('dev_prod').should == {:fun => true, :uptime_percentage => 5}
+        ConfigFileLoader.env=nil #back to testing default
+      end
+      it "should load prod properties" do
+        ConfigFileLoader.env='production'
+        l('dev_prod').should == {:fun => false, :uptime_percentage => 99.9}
+        ConfigFileLoader.env=nil #back to testing default
+      end
+    end
   end
 
 

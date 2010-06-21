@@ -87,9 +87,12 @@ class ConfigFileLoader
   # rails already defines this
   # return target.deep_merge(extra) if target.respond_to?(:deep_merge)
   def self.deep_merge(target, extra)
+    # return something if either is nil
     return target || extra if target.nil? || extra.nil?
 
     extra.each_key do |k1|
+      # if the key exists in both sides and they are both "hashes", merge
+      # could move this block to the first line, but may want special logic for lists
       if target.key?(k1) && target[k1].respond_to?(:each_key) && extra[k1].respond_to?(:each_key)
         target[k1] = deep_merge(target[k1],extra[k1])
       else

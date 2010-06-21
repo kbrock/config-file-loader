@@ -1,6 +1,30 @@
 = config-file-loader
 
-Description goes here.
+http://railscasts.com/episodes/85-yaml-configuration-file
+
+* assumes yaml files (which can contain erb) with the extension yml
+* assumes yaml file is in config (unless an absolute path is given)
+
+== file format
+
+# development:
+#   attribute1: value1
+#   attribute2:
+#     attribute2a: value2a
+#     attribute2b: value2b
+#   attribute3: <%= ENV['USER'] %>
+# test:
+#   attribute1: value1b
+# ...
+
+== usage
+
+APP_CONFIG = ConfigFileLoader.load(
+  'app_config.yml',
+  'app_config_local.yml',
+  '/opt/local/config/app_config_override.yml'
+)
+
 
 == Note on Patches/Pull Requests
  

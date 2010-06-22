@@ -55,7 +55,7 @@ class ConfigFileLoader
   def self.fix_name(name)
     return unless name.is_a?(String)
     #if it is not relative ('./file') or absolute ('/a/b/file') - tack on config directory
-    name = "#{self.base}/#{name}" unless ['.','/'].include?(name[0,1])
+    name = "#{self.base}/#{name}" unless ['.','/','~'].include?(name[0,1])
     name+=".yml" unless name.include?('yml') || name.include?('cfg')
     name
   end

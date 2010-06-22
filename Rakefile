@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "config-file-loader"
     gem.summary = %Q{Load config files from disk}
-    gem.description = %Q{simple way to load erb yaml config files}
+    gem.description = %Q{simple way to load erb yaml config files. based upon http://railscasts.com/episodes/85-yaml-configuration-file}
     gem.email = "keenan@thebrocks.net"
     gem.homepage = "http://github.com/kbrock/config-file-loader"
     gem.authors = ["kbrock"]

@@ -1,5 +1,6 @@
 require 'erb'
 require 'yaml'
+require 'ostruct'
 class ConfigFileLoader
 
   ## base directory for configuration
@@ -34,6 +35,10 @@ class ConfigFileLoader
 
   def self.load_no_symbolize_keys(*files)
     load_files(*files)
+  end
+
+  def self.load_as_struct(*files)
+    OpenStruct.new(load_files(*files))
   end
 
   def self.load(*files, &block)    

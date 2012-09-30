@@ -1,6 +1,8 @@
 require 'erb'
 require 'yaml'
 require 'ostruct'
+require "config_file_loader/version"
+
 class ConfigFileLoader
 
   ## base directory for configuration
@@ -21,12 +23,14 @@ class ConfigFileLoader
 
 
   def self.env
-    if defined?(@@env)
-      @@env
-    elsif defined?(RAILS_ENV)
-      RAILS_ENV
-    end
-    #else nil
+    @@env ||=
+      if defined?(Rails)
+        Rails.env
+      elsif defined?(RAILS_ENV)
+        RAILS_ENV
+      else
+        ENV['RACK_ENV'] || ENV['RAILS_ENV'] || ENV['ENVIRONMENT']
+      end
   end
   
   def self.env=(val)

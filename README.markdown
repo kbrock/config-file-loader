@@ -69,6 +69,10 @@ Add this line to your application's Gemfile:
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
+## Contributions
+
+Thanks to @brodock
+
 ## Copyright
 
 Copyright (c) 2012 kbrock. See LICENSE for details.
